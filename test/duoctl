@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Talk to the extension over D-Bus. Usage:
+#   duoctl state | sweep <seconds> | angle <degrees> | shot <png>
+# NESTED=1 targets the nested shell started by launch-nested.sh.
+set -eu
+if [ "${NESTED:-0}" = 1 ]; then export DBUS_SESSION_BUS_ADDRESS="$(cat "${TMPDIR:-/tmp}/lid-duo-nested.bus")"; fi
+obj=/org/gnome/Shell/Extensions/LidDuo; iface=org.gnome.Shell.Extensions.LidDuo
+case "${1:-state}" in
+  state) gdbus call --session --dest org.gnome.Shell --object-path $obj --method $iface.GetState | sed -E "s/^\('|',\)$//g" | sed 's/\\"/"/g' ;;
+  sweep) gdbus call --session --dest org.gnome.Shell --object-path $obj --method $iface.Sweep "${2:-1.6}" >/dev/null ;;
+  angle) gdbus call --session --dest org.gnome.Shell --object-path $obj --method $iface.SetAngle -- "$2" >/dev/null ;;
+  shot)  gdbus call --session --dest org.gnome.Shell --object-path $obj --method $iface.Shot "$2" >/dev/null ;;
+  *) echo "usage: duoctl state|sweep <s>|angle <deg>|shot <png>" >&2; exit 2 ;;
+esac

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.lid-duo" path="/org/gnome/shell/extensions/lid-duo/">
+    <key name="enabled" type="b"><default>true</default><summary>Play the fold</summary></key>
+    <key name="preset" type="s"><default>'duo'</default><summary>duo | soft | cinematic | custom</summary></key>
+    <key name="custom" type="s"><default>'{}'</default><summary>JSON overrides for the custom preset</summary></key>
+    <key name="rest-delay" type="d"><default>0.4</default><summary>Seconds the lid must rest before the fold lets go</summary></key>
+    <key name="fade-out" type="d"><default>0.35</default><summary>Seconds the frost takes to fade after a rest</summary></key>
+    <key name="rest-tolerance" type="d"><default>1.0</default><summary>Degrees of jitter that still count as resting</summary></key>
+    <key name="sensor-path" type="s"><default>''</default><summary>Path of the angle file; empty = find the IIO hinge device</summary></key>
+    <key name="poll-ms" type="i"><default>40</default><summary>Sensor poll interval</summary></key>
+    <key name="show-indicator" type="b"><default>true</default><summary>Show the panel menu</summary></key>
+  </schema>
+</schemalist>

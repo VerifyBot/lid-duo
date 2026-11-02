@@ -1,0 +1,9 @@
+{
+  "uuid": "lid-duo@local",
+  "name": "Lid Duo",
+  "description": "Frosted-glass fold that follows the laptop lid, driven by the hinge angle sensor (Mac Duo for GNOME).",
+  "shell-version": ["48", "49", "50"],
+  "settings-schema": "org.gnome.shell.extensions.lid-duo",
+  "url": "https://github.com/ninobc/mac-duo",
+  "version": 1
+}
